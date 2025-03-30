@@ -1,0 +1,32 @@
+/* navbar */
+
+.title {
+  color: white;
+  margin: 15px;
+  font-weight: 600;
+}
+
+.links ul li {
+  color: white;
+  margin: 15px;
+  font-weight: 600;
+}
+
+.logo i {
+  margin: 15px 10px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logo .fa-twitter:hover {
+  color: #1da1f2;
+}
+
+.logo .fa-facebook-f:hover {
+  color: #3b5998;
+}
+
+.logo .fa-dribbble:hover {
+  color: #ea4c89;
+}
