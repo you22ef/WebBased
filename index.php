@@ -14,6 +14,9 @@
         <input type="text" name="UserName" onkeyup="userInstance.checkUser(this.value)">
         <p id="response"></p>
         <input type="file" name="image" >
+        <label for="whatsappNumber">Enter WhatsApp Number:</label>
+        <input type="text" id="whatsappNumber" placeholder="e.g., +201000000000" name="whatsappNumber" required>
+        <button type="button" onclick="validateWhatsAppNumber()">Check</button>
         <!-- button -->
         <button type="submit" name="submit" >submit</button>
     </form>
