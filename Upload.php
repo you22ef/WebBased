@@ -13,7 +13,8 @@ class Uploading
     }
     public function UploadImage()
     {
-        $file_name = $_FILES['image']['name'];
+        $name = $_FILES['image']['name'];
+        $file_name = time() . '_' . $name;
         $tempname = $_FILES['image']['tmp_name'];
         $folder = 'Images/'.$file_name;
         echo $file_name;
