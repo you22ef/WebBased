@@ -17,28 +17,9 @@ class Uploading
         $file_name = time() . '_' . $name;
         $tempname = $_FILES['image']['tmp_name'];
         $folder = 'Images/'.$file_name;
-        echo $file_name;
-        $sql = "
-            INSERT INTO users (full_name, user_name, phone, whatsapp, address, password, email, user_image)
-            VALUES (
-                'yousse', 
-                'youssef1', 
-                '01126847652', 
-                '01126847652', 
-                'saftt', 
-                '1234', 
-                'yousseff@gmail.com', 
-                '$file_name'
-            )
-        ";
-        $query = mysqli_query($this->conn, $sql);
     
-        if(move_uploaded_file($tempname, $folder)) {
-            
-            echo "<h2>File uploaded successfully</h2>";
-        } else {
-            echo "<h2>File uploaded successfully</h2>";
-        }
+        move_uploaded_file($tempname, $folder);
+
         
     }
 
@@ -53,10 +34,8 @@ class Uploading
 const ImageInstance = new Uploading();
 if(isset($_POST['submit'])) 
 {
-    echo "Hello";
-    ImageInstance->UploadImage();
-            
+    ImageInstance->UploadImage();       
 }
-$res = ImageInstance->getResult();
+
 
 ?>

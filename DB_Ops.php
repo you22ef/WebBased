@@ -32,7 +32,7 @@ class DB_Ops {
                 whatsapp VARCHAR(15) NOT NULL,
                 address TEXT NOT NULL,
                 password VARCHAR(255) NOT NULL,
-                email VARCHAR(255) NOT NULL UNIQUE,
+                email VARCHAR(255) NOT NULL,
                 user_image VARCHAR(255) NOT NULL
             )
         ";
@@ -40,6 +40,8 @@ class DB_Ops {
     }
 
     public function insertUser($userData) {
+        $name = $_FILES['image']['name'];
+        $file_name = time() . '_' . $name;
         $sql = "
             INSERT INTO users (full_name, user_name, phone, whatsapp, address, password, email, user_image)
             VALUES (
@@ -50,7 +52,7 @@ class DB_Ops {
                 '{$userData['address']}', 
                 '{$userData['password']}', 
                 '{$userData['email']}', 
-                '{$userData['user_image']}'
+                '{$file_name}'
             )
         ";
 
@@ -69,11 +71,7 @@ class DB_Ops {
         $this->conn->close();
     }
 }
-function StartConnection()
-{
-    $connection = new DB_Ops();
-    
-}
+
 // $user = new DB_Ops();
 // $userDta = [
 //     'full_name'  => 'John Doe',
@@ -86,9 +84,16 @@ function StartConnection()
 //     'user_image' => 'profile_pics/johndoe.jpg' // Path to the user's image
 // ];
 // $user->insertUser($userDta);
+$userData = new DB_Ops();
 if (isset($_GET['username'])) 
 {
-    $userData = new DB_Ops();
+    
     $userData->checkUserName($_GET['username']);
 }
+
+if(isset($_POST['submit'])) 
+{
+    $userData->insertUser($_POST);
+}
+
 ?>
