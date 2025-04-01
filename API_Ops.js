@@ -112,12 +112,12 @@ class User {
     }
     checkInputs() {
         let usernameError = document.getElementById("alert").innerText;
-        let whatsappError = document.getElementById("whatsapp").innerText;
+        // let whatsappError = document.getElementById("whatsapp").innerText;
         let passwordError = document.getElementById("PasswordAlert").innerText;
         let confirmError = document.getElementById("Confirmation").innerText;
         console.log("hiii");
         console.log(usernameError);
-        if (usernameError || whatsappError || passwordError || confirmError ) {
+        if (usernameError || passwordError || confirmError ) {
             this.button.classList.add("disabled");
         } else {
             this.button.classList.remove("disabled");
