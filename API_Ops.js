@@ -30,42 +30,23 @@ class User {
     }
     
     async validateWhatsAppNumber(number) {
-        const url = 'https://whatsapp-number-validator3.p.rapidapi.com/WhatsappNumberHasItBulkWithToken';
-        if(number == "") 
-        {
-            document.getElementById("whatsapp").innerText = "";
-            this.checkInputs();
-            return;
-        }
-        const options = {
+
+        const response = await fetch('http://api/whatsapp-number-validator/rltsvuouydi1', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'x-rapidapi-key': 'd5d5cf73d5msh07dab3eff3f0f6ep1f748ajsn4e38bde1f69f',
-                'x-rapidapi-host': 'whatsapp-number-validators.p.rapidapi.com'
+                'X-Luckdata-Api-Key': '191b7ab91276e4832792f627a222c3a1',
             },
-            body: JSON.stringify({ number: number })
-        };
-    
-        try {
-            const response = await fetch('https://whatsapp-number-validators.p.rapidapi.com/v1/validate/wa_id', options);
-            const data = await response.json();
-            
-            if (data.valid) 
-            {
-                document.getElementById("whatsapp").innerText = "";
-                
-            }
-            else
-            {
-                document.getElementById("whatsapp").innerText = "Invalid WhatsApp number";
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            // alert('Failed to validate the number. Please try again later.');
-        }
-        this.checkInputs();
+            body: JSON.stringify({ "phone_number": number })
+        });
+        const data = await response.json();
+        console.log(data);
+
     }
+    
+    
+    // Example usage
+    
+    
     checkPassword(Confirm)
     {
         if(Confirm == "") 
@@ -117,7 +98,7 @@ class User {
         let confirmError = document.getElementById("Confirmation").innerText;
         console.log("hiii");
         console.log(usernameError);
-        if (usernameError || passwordError || confirmError ) {
+        if (usernameError  || passwordError || confirmError ) {
             this.button.classList.add("disabled");
         } else {
             this.button.classList.remove("disabled");

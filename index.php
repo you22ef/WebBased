@@ -20,47 +20,47 @@
     <form method="POST" id = "myForm" enctype="multipart/form-data">
         <div class="container mt-5">
             <div class="me-3 row">
-                <div class="col-lg-3 mt-3 ">
+                <div class="col-lg-12 mt-3 ">
                     <label for="exampleFormControlInput1" class="form-label">Full Name</label>
                     <input type="text" name="full_name" class="form-control" id="exampleFormControlInput1"  required>
                 </div>
-                <div class="col-lg-3 mt-3">
+                <div class="col-lg-12 mt-3">
                     <label for="exampleFormControlInput1" class="form-label">User Name</label>
                     <input type="text" name="user_name" class="form-control" onkeyup="userInstance.checkUser(this.value)" id="exampleFormControlInput1" required>
                     <p style="color: red;" class="mt-2" id="alert"></p>
                 </div>
-                <div class="col-lg-3 mt-3">
+                <div class="col-lg-12 mt-3">
                     <label for="exampleFormControlInput1" class="form-label">Phone</label>
                     <input type="text" name="phone" class="form-control" id="exampleFormControlInput1" required>
                 </div>
-                <div class="col-lg-3 mt-3">
+                <div class="col-lg-12 mt-3">
                     <label for="exampleFormControlInput1"  class="form-label">WhatsApp Number</label>
                     <input type="text" name="whatsapp" class="form-control" onkeyup="userInstance.validateWhatsAppNumber(this.value)" id="whatsappNumber" required>
-                    <!-- <p style="color: red;" class="mt-2" id="whatsapp"></p> -->
+                    <p style="color: red;" class="mt-2" id="whatsapp"></p>
                 </div>
-                <div class="col-lg-3 mt-3">
+                <div class="col-lg-12 mt-3">
                     <label for="exampleFormControlInput1" class="form-label">Address</label>
                     <input type="text" name="address" class="form-control" id="exampleFormControlInput1" required>
                 </div>
-                <div class="col-lg-3 mt-3">
+                <div class="col-lg-12 mt-3">
                     <label for="exampleFormControlInput1" class="form-label">Password</label>
                     <input type="password" name="password" class="form-control" onkeyup ="userInstance.ValidatePassword(this.value)"  id="Password" aria-describedby="passwordHelpBlock" required>
                     <p style="color: red;" class="mt-2" id="PasswordAlert"></p>
                 </div>
-                <div class="col-lg-3 mt-3">
+                <div class="col-lg-12 mt-3">
                     <label for="exampleFormControlInput1" class="form-label">Confirm Password</label>
                     <input type="password" class="form-control" onkeyup="userInstance.checkPassword(this.value)" id="Confirm" aria-describedby="passwordHelpBlock" required>
                     <p style="color: red;" class="mt-2" id="Confirmation"></p>
                 </div>
-                <div class="col-lg-3 mt-3">
+                <div class="col-lg-12 mt-3">
                     <label for="formFile" class="form-label">User Image</label>
                     <input class="form-control" name ="image" type="file" id="formFile" required>
                 </div>
-                <div class="col-lg-3 mt-3">
+                <div class="col-lg-12 mt-3">
                     <label for="exampleFormControlInput1"  class="form-label">Email</label>
                     <input type="email" name="email" class="form-control" id="exampleFormControlInput1" required>
                 </div>
-                <div class="col-lg-3 mt-5">
+                <div class="col-lg-12  mb-5  mt-5">
                     <button type="submit" name="submit" id = "submit" class="btn btn-primary">Submit</button>
                 </div>
                 

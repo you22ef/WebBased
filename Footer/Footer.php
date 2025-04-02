@@ -1,6 +1,6 @@
 
 <footer>
-  <div class="container-fluid fixed-bottom  pt-5 ps-5 pe-5 bg-black">
+  <div class="container-fluid   pt-5 ps-5 pe-5 bg-black">
     <div class="row d-flex justify-content-between text-white">
       <div class="col-md-6 col-6">
         <div>
