@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-lg-12 mt-3">
                     <label for="exampleFormControlInput1" class="form-label">User Name</label>
-                    <input type="text" name="user_name" class="form-control" onkeyup="userInstance.checkUser(this.value)" id="exampleFormControlInput1" required>
+                    <input type="text" name="user_name" class="form-control"id="Username" required>
                     <p style="color: red;" class="mt-2" id="alert"></p>
                 </div>
                 <div class="col-lg-12 mt-3">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="col-lg-12 mt-3">
                     <label for="exampleFormControlInput1"  class="form-label">WhatsApp Number</label>
-                    <input type="text" name="whatsapp" class="form-control" onkeyup="userInstance.validateWhatsAppNumber(this.value)" id="whatsappNumber" required>
+                    <input type="text" name="whatsapp" class="form-control" id="whatsappNumber" required>
                     <p style="color: red;" class="mt-2" id="whatsapp"></p>
                 </div>
                 <div class="col-lg-12 mt-3">
@@ -61,27 +61,16 @@
                     <input type="email" name="email" class="form-control" id="exampleFormControlInput1" required>
                 </div>
                 <div class="col-lg-12  mb-5  mt-5">
-                    <button type="submit" name="submit" id = "submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" id="submitting" class="btn btn-primary">Submit</button>
                 </div>
                 
             </div>
         </div>
     
     </form>
-    <!-- <form action="POST" enctype="multipart/form-data">
-            <input type="text" name="UserName" onkeyup="userInstance.checkUser(this.value)">
-            <p id="response"></p>
-            <input type="file" name="image" >
-            <label for="whatsappNumber">Enter WhatsApp Number:</label>
-            <input type="text" id="whatsappNumberr" placeholder="e.g., +201000000000" name="whatsappNumber" required>
-            <button type="button" onclick="validateWhatsAppNumber()">Check</button>
-          
-            <button type="submit" name="submit" >submit</button>
-    </form> -->
-
+    
 
     <?php include 'Footer/Footer.php'; ?>
-    <!-- <input type="text" name="UserName" onchange="checkUser(this.value)"> -->
     <script src="API_Ops.js"></script>
 </body>
 </html>

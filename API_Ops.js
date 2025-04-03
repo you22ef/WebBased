@@ -1,26 +1,26 @@
 class User {
 
     constructor() {
-        this.button = document.getElementById("submit");
+        this.button = document.getElementById("submitting");
     }
 
 
-    checkUser(username) {
+    checkUser(username,callback) {
         if(username == "") 
         {
             document.getElementById("alert").innerText = "";
-            this.checkInputs();
-            return;
+            return false;
         }
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = () => { 
             if (xhr.readyState == 4 && xhr.status == 200) {
                 if (xhr.responseText == "1") {
                     document.getElementById("alert").innerText = "Username already exists";
+                    callback(false);
                 } else {
                     document.getElementById("alert").innerText = "";
+                    callback(true);
                 }
-                this.checkInputs(); 
             }
         };
         
@@ -29,22 +29,51 @@ class User {
         
     }
     
-    async validateWhatsAppNumber(number) {
-
-        const response = await fetch('http://api/whatsapp-number-validator/rltsvuouydi1', {
+    async validateWhatsAppNumber(number) 
+    {
+        number = String(number);
+        if(number == "") 
+        {
+            document.getElementById("whatsapp").innerText = "";
+            this.checkInputs();
+            return false;
+        }
+        const url = 'https://whatsapp-number-validator3.p.rapidapi.com/WhatsappNumberHasItWithToken';
+        const options = {
             method: 'POST',
             headers: {
-                'X-Luckdata-Api-Key': '191b7ab91276e4832792f627a222c3a1',
+                'x-rapidapi-key': 'd92e305f3emsh1d7d5ae73f847cap1086d5jsn40e66925b762',
+                'x-rapidapi-host': 'whatsapp-number-validator3.p.rapidapi.com',
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ "phone_number": number })
-        });
-        const data = await response.json();
-        console.log(data);
+            body: JSON.stringify({
+                phone_number: number,
+            })
+        };
 
+        try {
+            const response = await fetch(url, options);
+            const result = await response.json();
+            console.log(result.status);
+            console.log(number);
+            if(result.status =="valid")
+            {
+                document.getElementById("whatsapp").innerText = "";
+                return true;
+            }
+            else
+            {
+                document.getElementById("whatsapp").innerText = "Invalid WhatsApp number";
+                return false
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    
+        this.checkInputs();
+    return true;
     }
     
-    
-    // Example usage
     
     
     checkPassword(Confirm)
@@ -61,6 +90,7 @@ class User {
         {
             alert.innerText = "Passwords do not match";
             
+            
         }
         else
         {
@@ -68,6 +98,8 @@ class User {
     
         }
         this.checkInputs();
+    
+        
     }
     ValidatePassword(Password)
     {
@@ -75,7 +107,6 @@ class User {
         if(Password == "") 
         {
             document.getElementById("PasswordAlert").innerText = "";
-            this.checkInputs();
             return;
         }
         let alert = document.getElementById("PasswordAlert");
@@ -92,20 +123,43 @@ class User {
         this.checkInputs();
     }
     checkInputs() {
-        let usernameError = document.getElementById("alert").innerText;
-        // let whatsappError = document.getElementById("whatsapp").innerText;
         let passwordError = document.getElementById("PasswordAlert").innerText;
         let confirmError = document.getElementById("Confirmation").innerText;
-        console.log("hiii");
-        console.log(usernameError);
-        if (usernameError  || passwordError || confirmError ) {
+        let password = document.getElementById("Password").value;
+        let confirm = document.getElementById("Confirm").value;
+        if(password == confirm)
+        {
+            this.button.classList.remove("disabled");
+        }
+        else if (passwordError || confirmError ) {
             this.button.classList.add("disabled");
         } else {
             this.button.classList.remove("disabled");
         }
     }
 }
-
-
-
 const userInstance = new User();
+
+
+document.getElementById("myForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    let whatsapp = document.getElementById("whatsappNumber").value;
+    let username = document.getElementById("Username").value;
+
+    const isValidWhatsApp = await userInstance.validateWhatsAppNumber(whatsapp);
+    userInstance.checkUser(username, function(isValidUser) {
+        console.log(isValidUser + " " + isValidWhatsApp);
+
+        if (!isValidWhatsApp || !isValidUser) {
+            console.log("Invalid inputs");
+            return;
+        } else {
+            console.log("Valid inputs");
+            document.getElementById("myForm").submit(); 
+        }
+    });
+});
+
+
+

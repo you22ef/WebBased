@@ -91,7 +91,7 @@ if (isset($_GET['username']))
     $userData->checkUserName($_GET['username']);
 }
 
-if(isset($_POST['submit'])) 
+if($_SERVER["REQUEST_METHOD"] == "POST") 
 {
     $userData->insertUser($_POST);
 }
