@@ -32,7 +32,7 @@ class Uploading
 }
 
 const ImageInstance = new Uploading();
-if(isset($_POST['submit'])) 
+if($_SERVER["REQUEST_METHOD"] == "POST") 
 {
     ImageInstance->UploadImage();       
 }
