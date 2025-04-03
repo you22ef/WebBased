@@ -32,6 +32,7 @@
                 <div class="col-lg-12 mt-3">
                     <label for="exampleFormControlInput1" class="form-label">Phone</label>
                     <input type="text" name="phone" class="form-control" id="exampleFormControlInput1" required>
+                    <p style="color: red;" class="mt-2" id="Phone"></p>
                 </div>
                 <div class="col-lg-12 mt-3">
                     <label for="exampleFormControlInput1"  class="form-label">WhatsApp Number</label>
@@ -41,6 +42,7 @@
                 <div class="col-lg-12 mt-3">
                     <label for="exampleFormControlInput1" class="form-label">Address</label>
                     <input type="text" name="address" class="form-control" id="exampleFormControlInput1" required>
+                    <p style="color: red;" class="mt-2" id="Adress"></p>
                 </div>
                 <div class="col-lg-12 mt-3">
                     <label for="exampleFormControlInput1" class="form-label">Password</label>
@@ -55,10 +57,12 @@
                 <div class="col-lg-12 mt-3">
                     <label for="formFile" class="form-label">User Image</label>
                     <input class="form-control" name ="image" type="file" id="formFile" required>
+                    <p style="color: red;" class="mt-2" id="File"></p>
                 </div>
                 <div class="col-lg-12 mt-3">
                     <label for="exampleFormControlInput1"  class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" required>
+                    <input type="email" name="email" class="form-control" id="Email" required>
+                    <p style="color: red;" class="mt-2" id="Emailalert"></p>
                 </div>
                 <div class="col-lg-12  mb-5  mt-5">
                     <button type="submit" id="submitting" class="btn btn-primary">Submit</button>

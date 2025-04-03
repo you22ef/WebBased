@@ -5,29 +5,43 @@ class User {
     }
 
 
-    checkUser(username,callback) {
-        if(username == "") 
-        {
+    check(data, field, callback) {
+        if (data == "") {
             document.getElementById("alert").innerText = "";
             return false;
         }
+    
         let xhr = new XMLHttpRequest();
         xhr.onreadystatechange = () => { 
             if (xhr.readyState == 4 && xhr.status == 200) {
                 if (xhr.responseText == "1") {
-                    document.getElementById("alert").innerText = "Username already exists";
+                    if(field == "username")
+                    {
+                        document.getElementById("alert").innerText = "Username '" + data + "' already exists";
+                    }
+                    else if(field == "email")
+                    {
+                        document.getElementById("Emailalert").innerText = "Email '" + data + "' already exists";
+                    }
                     callback(false);
                 } else {
-                    document.getElementById("alert").innerText = "";
+                    if(field == "username")
+                    {
+                        document.getElementById("alert").innerText = "";
+                    }
+                    else if(field == "email")
+                    {
+                        document.getElementById("Emailalert").innerText = "";
+                    }
                     callback(true);
                 }
             }
         };
-        
-        xhr.open("GET", "DB_Ops.php?username=" + username, true);
+    
+        xhr.open("GET", "DB_Ops.php?" + field + "=" + data, true);
         xhr.send();
-        
     }
+    
     
     async validateWhatsAppNumber(number) 
     {
@@ -142,22 +156,38 @@ const userInstance = new User();
 
 
 document.getElementById("myForm").addEventListener("submit", async function(event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent default form submission
 
     let whatsapp = document.getElementById("whatsappNumber").value;
     let username = document.getElementById("Username").value;
+    let email = document.getElementById("Email").value;
 
+    // Validate WhatsApp number asynchronously
     const isValidWhatsApp = await userInstance.validateWhatsAppNumber(whatsapp);
-    userInstance.checkUser(username, function(isValidUser) {
-        console.log(isValidUser + " " + isValidWhatsApp);
 
-        if (!isValidWhatsApp || !isValidUser) {
-            console.log("Invalid inputs");
+    // Check username, email, and WhatsApp asynchronously
+    userInstance.check(username, 'username', (isValidUsername) => {
+        if (!isValidUsername) {
+            console.log("Username is invalid");
             return;
-        } else {
-            console.log("Valid inputs");
-            document.getElementById("myForm").submit(); 
         }
+
+        userInstance.check(email, 'email', (isValidEmail) => {
+            if (!isValidEmail) {
+                console.log("Email is invalid");
+                return;
+            }
+
+            // Check WhatsApp number validity
+            if (!isValidWhatsApp) {
+                console.log("WhatsApp number is invalid");
+                return;
+            }
+
+            // If all validations pass, submit the form
+            console.log("Valid inputs");
+            document.getElementById("myForm").submit(); // Submit the form manually
+        });
     });
 });
 

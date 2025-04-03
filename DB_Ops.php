@@ -66,6 +66,13 @@ class DB_Ops {
         echo $result->num_rows > 0;
         
     }
+    public function checkEmail($email)
+    {
+        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $result = $this->conn->query($sql);
+        echo $result->num_rows > 0;
+        
+    }
 
     public function __destruct() {
         $this->conn->close();
@@ -89,6 +96,11 @@ if (isset($_GET['username']))
 {
     
     $userData->checkUserName($_GET['username']);
+}
+if (isset($_GET['email'])) 
+{
+    
+    $userData->checkEmail($_GET['email']);
 }
 
 if($_SERVER["REQUEST_METHOD"] == "POST") 
