@@ -34,10 +34,13 @@
                     <input type="text" name="phone" class="form-control" id="exampleFormControlInput1" required>
                     <p style="color: red;" class="mt-2" id="Phone"></p>
                 </div>
-                <div class="col-lg-12 mt-3">
+                <div class="col-lg-11 mt-3">
                     <label for="exampleFormControlInput1"  class="form-label">WhatsApp Number</label>
                     <input type="text" name="whatsapp" class="form-control" id="whatsappNumber" required>
                     <p style="color: red;" class="mt-2" id="whatsapp"></p>
+                </div>
+                <div class="col-lg-1 mt-5">
+                    <button type="button" id="Check" class="btn btn-warning w-100">Check</button>
                 </div>
                 <div class="col-lg-12 mt-3">
                     <label for="exampleFormControlInput1" class="form-label">Address</label>

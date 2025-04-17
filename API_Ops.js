@@ -154,6 +154,11 @@ class User {
 }
 const userInstance = new User();
 
+document.getElementById("Check").addEventListener("click", async function(event) 
+{
+    let whatsapp = document.getElementById("whatsappNumber").value;
+    const isValidWhatsApp = await userInstance.validateWhatsAppNumber(whatsapp);
+});
 
 document.getElementById("myForm").addEventListener("submit", async function(event) {
     event.preventDefault(); // Prevent default form submission
